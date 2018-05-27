@@ -1,0 +1,1 @@
+var expenses = angular.module("expenses", ["ngRoute", "ngCookies"]);

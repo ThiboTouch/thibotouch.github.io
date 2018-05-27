@@ -1,0 +1,14 @@
+<div class="expenseInfo" ng-repeat="expense in expensesToDisplay">
+	<div class="card-body">
+		<h5 class="card-title">{{expense.title}} <strong class="close expense-info-close" ng-click="removeExpense(expense)">x</strong></h5>
+		<div class="expense-description">
+			<p class="card-text">
+				{{expense.description}}
+			</p>
+			<div class="border border-dark expense-cost">
+				<button class="btn btn-success" type="button" ng-disabled="expense.paid" ng-click="markAsPaid(expense)">Paid</button>
+				<h3 class="float-right">{{expense.cost | currency:'R'}}</h3>
+			</div>
+		</div>
+	</div>
+</div>

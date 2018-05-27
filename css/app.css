@@ -1,0 +1,52 @@
+div#expense-status{
+	margin-top: 1rem;
+}
+div#expensesContainer{
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+button.alert-toggle{
+	margin-top: 1rem;
+	margin-bottom: 0.5rem;
+}
+
+.expensesCard{
+	margin-bottom: 1rem;
+}
+
+.expensesCard > div.card-body{
+	padding: 0;
+	overflow: auto;
+    height: 30rem;
+}
+
+.expenseInfo{
+	border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.expenseInfo > div.card-body{
+	padding: .3rem;
+}
+
+.expense-info-close:hover, .expense-info-close:focus{
+	color: #dc3545;
+    text-decoration: none;
+    opacity: 1;
+}
+
+.expense-info-close{
+	color: #dc3545;
+}
+
+div.expense-cost{
+	padding:0.3rem;
+}
+
+.expense-cost > h3{
+	display:inline;
+}
+
+.nav-item > a{
+	margin-right: 0.3rem;
+}

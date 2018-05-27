@@ -1,0 +1,12 @@
+<div class="col-md-12">
+	<button ng-class="{'btn-danger': inArrears, 'btn-success': !inArrears}" type="button" class="btn alert-toggle" ng-click="showAlert()">
+		<i class="fas fa-exclamation-triangle"></i>
+	</button>
+	<div ng-class="{'alert-danger': inArrears, 'alert-success': !inArrears}" class="alert" id="expense-status" role="alert" ng-show="expand">
+		<h3>Status: <small>{{status}}</small></h3>
+		<hr/>
+		<h3>Month: <small>{{period | date: 'MMMM dd'}}</small></h3>
+		<hr/>
+		<h3>Balance Owed: <small>{{balance | currency:'R'}}</small></h3>
+	</div>
+</div>
