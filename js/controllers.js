@@ -2,10 +2,10 @@ expenses.controller("dashboardCtrl", function ($scope, $filter, expenses, Expens
 	$scope.paidExpenses = $filter('filter')(expenses, {paid:true});
 	$scope.outstandingExpenses = $filter('filter')(expenses, {paid:false});
 	
-	$scope.balance = ExpenseBalanceService.calculateBalance();
-	$scope.updateStatus = function(bal)
+	$scope.balObj = { balance: ExpenseBalanceService.calculateBalance()};
+	$scope.updateStatus = function()
 	{
-		if(bal > 0)
+		if($scope.balObj.balance > 0)
 		{
 			$scope.status = "Arrears";
 			$scope.inArrears = true;
@@ -16,7 +16,7 @@ expenses.controller("dashboardCtrl", function ($scope, $filter, expenses, Expens
 		}
 	}
 	
-	$scope.updateStatus($scope.balance);
+	$scope.updateStatus();
 });
 
 expenses.controller("expenseCtrl", function ($scope, $routeParams, $location, expense) {

@@ -21,7 +21,7 @@ expenses.directive("status", function () {
 	return {
 		restrict: 'E',
 		scope: {
-		   balance: '=',
+		   balObj: '=balobj',
 		   status: '=',
 		   inArrears: '=inarrears'
 		},
@@ -42,7 +42,7 @@ expenses.directive("expenseinfo", function(ExpenseBalanceService, ExpenseDataSer
 				$scope.paidExpenses.push(expense);
 				
 				ExpenseDataService.updateExpense(expense);
-				$scope.balance = ExpenseBalanceService.calculateBalance();
+				$scope.balObj.balance = ExpenseBalanceService.calculateBalance();
 				$scope.updateStatus();
 			}
 		}
@@ -61,7 +61,7 @@ expenses.directive("expenseinfo", function(ExpenseBalanceService, ExpenseDataSer
 				$scope.outstandingExpenses.splice(index, 1);
 				//delete expense
 			}
-			$scope.balance = ExpenseBalanceService.calculateBalance();
+			$scope.balObj.balance = ExpenseBalanceService.calculateBalance();
 			$scope.updateStatus();
 		}
 	}];
@@ -72,7 +72,7 @@ expenses.directive("expenseinfo", function(ExpenseBalanceService, ExpenseDataSer
 			expensesToDisplay: "=expensestodisplay",
 			paidExpenses: "=paidexpenses",
 			outstandingExpenses: "=outstandingexpenses",
-			balance: "=",
+			balObj: "=balobj",
 			updateStatus: "&updatestatus"
 		},
 		templateUrl: "partials/expenseinfo.html",

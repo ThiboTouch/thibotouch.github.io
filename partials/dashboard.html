@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<status inArrears="inArrears" status="status" balance="balance">
+		<status inArrears="inArrears" status="status" balObj="balObj">
 		</status>
 	</div>
 </div>
@@ -30,7 +30,7 @@
 					<h1 class="text-danger">Outstanding<h1>
 				</div>
 				<div class="card-body">
-					<expenseinfo updateStatus="updateStatus(balance)" balance="balance" expensesToDisplay="outstandingExpenses" paidExpenses="paidExpenses" outstandingExpenses="outstandingExpenses"></expenseinfo>
+					<expenseinfo updateStatus="updateStatus()" balObj="balObj" expensesToDisplay="outstandingExpenses" paidExpenses="paidExpenses" outstandingExpenses="outstandingExpenses"></expenseinfo>
 				</div>
 			    <div class="card-footer">
 					Panel footer
@@ -43,7 +43,7 @@
 					<h1 class="text-success">Paid<h1>
 				</div>
 				<div class="card-body">
-					<expenseinfo updateStatus="updateStatus(balance)" balance="balance" expensesToDisplay="paidExpenses" paidExpenses="paidExpenses" outstandingExpenses="outstandingExpenses"></expenseinfo>
+					<expenseinfo updateStatus="updateStatus()" balObj="balObj" expensesToDisplay="paidExpenses" paidExpenses="paidExpenses" outstandingExpenses="outstandingExpenses"></expenseinfo>
 				</div>
 			    <div class="card-footer">
 					Panel footer
