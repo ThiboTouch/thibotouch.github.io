@@ -76,10 +76,37 @@ expenses.factory("ExpenseDataService", function ($cookies, $filter, expensesConf
 		return false;
 	}
 
+	var _deleteExpense = function(expense){
+		var allExpenses = _getAllExpenses();
+		var oldExpense = $filter('filter')(allExpenses, {id:expense.id});
+		if(oldExpense)
+		{
+			allExpenses = _.without(allExpenses, _.findWhere(allExpenses, {
+			  id: expense.id
+			}));
+			createExpensesCookie(allExpenses);
+		}
+	}
+
+	var _resetExpenses = function()
+	{
+		var allExpenses = _getAllExpenses();
+		if(allExpenses)
+		{
+			var paidExpenses = $filter('filter')(allExpenses, {paid:true});
+			paidExpenses.forEach(function(item){
+				item.paid = false;
+				_updateExpense(item);
+			});
+		}
+	}
+
 	return {
 		getAllExpenses: _getAllExpenses,
 		updateExpense: _updateExpense,
-		addExpense: _addExpense
+		addExpense: _addExpense,
+		deleteExpense: _deleteExpense,
+		resetExpenses: _resetExpenses
 	};
 });
 

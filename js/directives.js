@@ -59,7 +59,7 @@ expenses.directive("expenseinfo", function(ExpenseBalanceService, ExpenseDataSer
 			else{
 				var index = $scope.outstandingExpenses.indexOf(expense);
 				$scope.outstandingExpenses.splice(index, 1);
-				//delete expense
+				ExpenseDataService.deleteExpense(expense);
 			}
 			$scope.balObj.balance = ExpenseBalanceService.calculateBalance();
 			$scope.updateStatus();

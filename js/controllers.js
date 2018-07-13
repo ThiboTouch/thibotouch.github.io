@@ -1,4 +1,4 @@
-expenses.controller("dashboardCtrl", function ($scope, $filter, expenses, ExpenseBalanceService) {
+expenses.controller("dashboardCtrl", function ($scope, $filter, expenses, ExpenseBalanceService, ExpenseDataService) {
 	$scope.paidExpenses = $filter('filter')(expenses, {paid:true});
 	$scope.outstandingExpenses = $filter('filter')(expenses, {paid:false});
 	
@@ -14,6 +14,10 @@ expenses.controller("dashboardCtrl", function ($scope, $filter, expenses, Expens
 			$scope.status = "Clear";
 			$scope.inArrears = false;
 		}
+	}
+
+	$scope.reset = function(){
+		ExpenseDataService.resetExpenses();
 	}
 	
 	$scope.updateStatus();
