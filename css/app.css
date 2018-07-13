@@ -50,3 +50,21 @@ div.expense-cost{
 .nav-item > a{
 	margin-right: 0.3rem;
 }
+
+.form-alert {
+	background-color: #F2DEDE;
+	border: 1px solid #EED3D7;
+	color: #B94A48;
+	padding: 20px;
+	border-radius: 5px;
+  }
+	 
+.form-alert-topic {
+font-size: 18px;
+font-weight: bold;
+display: block;
+}
+	
+.form-alert-description {
+font-size: 16px;
+}

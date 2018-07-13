@@ -1,1 +1,1 @@
-var expenses = angular.module("expenses", ["ngRoute", "ngCookies"]);
+var expenses = angular.module("expenses", ["ngRoute", "ngCookies", "toaster", "ngAnimate"]);

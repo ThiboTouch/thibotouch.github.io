@@ -1,4 +1,4 @@
-expenses.factory("ExpenseDataService", function ($cookies, $filter) {
+expenses.factory("ExpenseDataService", function ($cookies, $filter, expensesConfig) {
 	function setCookieExpiresDate (expiryDays) {
 		var expiryDate = new Date();
 		expiryDate.setDate(expiryDate.getDate() + expiryDays);
@@ -14,6 +14,12 @@ expenses.factory("ExpenseDataService", function ($cookies, $filter) {
 			$cookies.remove('myExpenses');
 		}
 		$cookies.putObject('myExpenses', expenses, {path: '/', expires: setCookieExpiresDate(30)});
+	}
+
+	function generateExpenseId(expenses)
+	{
+		var maxId = Math.max.apply(Math, expenses.map(function(item){return item.id;}));
+		return maxId + 1;
 	}
 
 	var _getAllExpenses = function(){
@@ -51,15 +57,29 @@ expenses.factory("ExpenseDataService", function ($cookies, $filter) {
 			  id: expense.id
 			}));
 			
-			allExpenses.push(expense)
+			allExpenses.push(expense);
 			createExpensesCookie(allExpenses);
 		}
 	};
 
+	var _addExpense = function(expense){
+		var allExpenses = _getAllExpenses();
+
+		if(allExpenses.length < expensesConfig.expensesLimit)
+		{
+			expense.paid = false;
+			expense.id = generateExpenseId(allExpenses);
+			allExpenses.push(expense);
+			createExpensesCookie(allExpenses);
+			return true;
+		}
+		return false;
+	}
 
 	return {
 		getAllExpenses: _getAllExpenses,
-		updateExpense: _updateExpense
+		updateExpense: _updateExpense,
+		addExpense: _addExpense
 	};
 });
 

@@ -1,2 +1,93 @@
-<h1>Hello World from Expense!</h1>
-<a href="#/dashboard">Back</a>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <h1>Add New Expense</h1>
+            <alert topic="Incomplete form!" ng-show="expenseForm.$dirty && expenseForm.$invalid">
+                <ul>
+                    <li ng-show="expenseForm.expenseTitle.$error.minlength">
+                        The expense title must have a minimum of 3 characters.
+                    </li>
+                    <li ng-show="expenseForm.expenseTitle.$error.maxlength">
+                        The expense title must have a maximum of 32 characters.
+                    </li>
+                    <li ng-show="expenseForm.expenseTitle.$error.required">
+                        The expense title is a required field.
+                    </li>
+                    <li ng-show="expenseForm.expenseCost.$error.required">
+                        The expense cost is a required field.
+                    </li>
+                    <li ng-show="expenseForm.expenseCost.$error.max">
+                        The maximum expense cost is 1 000 000.
+                    </li>
+                    <li ng-show="expenseForm.expenseCost.$error.pattern">
+                        Incorrect format provided for expense cost.
+                    </li>
+                    <li ng-show="expenseForm.expenseDescription.$error.pattern">
+                        Incorrect format provided for expense cost.
+                    </li>
+                    <li ng-show="expenseForm.expenseDescription.$error.minlength">
+                        The expense description must have a minimum of 6 characters.
+                    </li>
+                    <li ng-show="expenseForm.expenseDescription.$error.maxlength">
+                        The expense description must have a maximum of 100 characters.
+                    </li>
+                    <li ng-show="expenseForm.expenseDescription.$error.required">
+                        The expense description is a required field.
+                    </li>
+                </ul>
+            </alert>
+            <toaster-container></toaster-container>
+            <form name="expenseForm">
+                <input 
+                    name="expenseId"
+                    type="hidden" 
+                    ng-model="expense.id"
+                >
+                <div class="form-group">
+                    <label for="expenseTitle">Title</label>
+                    <input  name="expenseTitle"
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Property"
+                        ng-model="expense.title" 
+                        ng-required="true"
+                        ng-minlength="3"
+                        ng-maxlength="32"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="cost">Cost (R)</label>
+                    <input 
+                        name="expenseCost"
+                        type="number" 
+                        class="form-control" 
+                        placeholder="4900.00"
+                        ng-model="expense.cost" 
+                        ng-required="true" 
+                        min="0"
+                        max="1000000"
+                        ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+                        step="0.01"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea 
+                        name="expenseDescription"
+                        rows="3"
+                        class="form-control"
+                        placeholder="Monthly payment for 1 bed apartment."
+                        ng-model="expense.description" 
+                        ng-required="true" 
+                        ng-minlength="6"
+                        ng-maxlength="100"
+                    ></textarea>
+                </div>
+                <button class="btn btn-primary" ng-disabled="expenseForm.$invalid" ng-click="addExpense(expense)">Submit</button>
+                <a class="btn btn-danger" href="#/dashboard">Cancel</a>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>

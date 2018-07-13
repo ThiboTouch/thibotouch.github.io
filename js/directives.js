@@ -79,3 +79,15 @@ expenses.directive("expenseinfo", function(ExpenseBalanceService, ExpenseDataSer
 		controller: controller
 	};
 });
+
+expenses.directive("alert", function () {
+	return {
+		restrict: 'E',
+		scope: {
+			topic: '@'
+		},
+		templateUrl: "partials/alert.html",
+		replace: true,
+		transclude: true
+	};
+});

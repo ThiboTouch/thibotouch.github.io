@@ -11,12 +11,7 @@ expenses.config(function ($routeProvider) {
     }).
     when("/expense/:id?", {
       templateUrl: "partials/expense.html",
-      controller: "expenseCtrl",
-      resolve: {
-        "expense": function () {
-          return {"name":"expense1"};
-        }
-      }
+      controller: "expenseCtrl"
     }).
     otherwise({
       redirectTo: '/dashboard'
