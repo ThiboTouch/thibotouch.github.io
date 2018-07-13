@@ -29,12 +29,6 @@ button.alert-toggle{
 	padding: .3rem;
 }
 
-.expense-info-close:hover, .expense-info-close:focus{
-	color: #dc3545;
-    text-decoration: none;
-    opacity: 1;
-}
-
 .expense-info-close{
 	color: #dc3545;
 }
