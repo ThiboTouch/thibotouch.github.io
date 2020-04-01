@@ -2,4 +2,4 @@
 
 Can easily be integrated and extended with a back-end to store the expenses data and link with bank account.
 
-Demo: thibotouch.github.io
+Demo: http://thibotouch.github.io
